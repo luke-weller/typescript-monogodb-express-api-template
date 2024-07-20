@@ -1,6 +1,6 @@
 import express, { Application } from "express";
-import mongoose from "mongoose";
 import exampleRoutes from "./routes/exampleRoutes";
+import { connectDB } from "./config/database"; // Import the connectToDatabase function
 
 require("dotenv").config();
 
@@ -20,18 +20,7 @@ class App {
   }
 
   private setMongoConfig() {
-    mongoose.Promise = global.Promise;
-    const mongoUri = process.env.MONGO_URI;
-
-    if (!mongoUri) {
-      console.error("MongoDB URI is not defined in .env file");
-      process.exit(1);
-    }
-
-    mongoose
-      .connect(mongoUri)
-      .then(() => console.log("MongoDB connected"))
-      .catch((err) => console.error(err));
+    connectDB();
   }
 
   private setRoutes() {
