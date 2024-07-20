@@ -1,1 +1,0 @@
-# typescript-monogodb-node-api-template
