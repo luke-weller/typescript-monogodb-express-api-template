@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/config/mockDatabase.ts"],
   "exclude": ["node_modules", "dist", "tests"]
 }

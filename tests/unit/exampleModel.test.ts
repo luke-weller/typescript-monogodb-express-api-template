@@ -1,19 +1,14 @@
 import { ExampleModel } from "../../src/models/exampleModel";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
+import { connectDB, closeDatabase } from "../config/mockDatabase";
 
 describe("ExampleModel", () => {
-  let mongoServer: MongoMemoryServer;
-
   beforeAll(async () => {
-    mongoServer = await MongoMemoryServer.create();
-    const mongoUri = mongoServer.getUri();
-    await mongoose.connect(mongoUri);
+    await connectDB();
   });
 
   afterAll(async () => {
-    await mongoose.disconnect();
-    await mongoServer.stop();
+    await closeDatabase();
   });
 
   beforeEach(async () => {
