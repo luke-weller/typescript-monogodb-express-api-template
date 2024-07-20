@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ExampleModel from "../models/exampleModel";
+import { ExampleModel } from "../models/exampleModel";
 
 // Create a new example
 export const createExample = async (req: Request, res: Response) => {
