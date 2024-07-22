@@ -1,4 +1,48 @@
-.env
-/dist
-node_modules
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
 
+# Dependency directories
+pnp/
+.pnp/
+.pnp.js
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Ignore built output
+/dist
+
+# Ignore local configuration files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore log files and other generated files
+logs/
+*.log
+*.log.*
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore TypeScript build output
+*.js
+*.js.map
+
+# Ignore TypeScript declaration files
+*.d.ts
+!global.d.ts
+
+# Ignore TypeScript cache files
+*.tsbuildinfo

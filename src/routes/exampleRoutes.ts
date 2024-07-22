@@ -7,21 +7,21 @@ import {
   deleteExampleById,
 } from "../controllers/exampleController";
 
-const router = express.Router();
+const exampleRouter = express.Router();
 
 // Route to get a list of examples
-router.get("/", getAllExamples);
+exampleRouter.get("/", getAllExamples);
 
 // Route to get a single example by id
-router.get("/:id", getExampleById);
+exampleRouter.get("/:id", getExampleById);
 
 // Route to create a new example
-router.post("/", createExample);
+exampleRouter.post("/", createExample);
 
 // Route to update an existing example
-router.put("/:id", updateExampleById);
+exampleRouter.put("/:id", updateExampleById);
 
 // Route to delete an example
-router.delete("/:id", deleteExampleById);
+exampleRouter.delete("/:id", deleteExampleById);
 
-export default router;
+export default exampleRouter;

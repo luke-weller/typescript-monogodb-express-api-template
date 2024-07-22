@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 
+//
+/**
+ * Connects to the MongoDB database using the provided MONGO_URI.
+ * Prints a success message if the connection is successful, otherwise logs the error and exits the process.
+ */
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI as string);
