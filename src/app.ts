@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import exampleRoutes from "./routes/exampleRoutes";
-import { connectDB } from "./config/database"; // Import the connectToDatabase function
+import ConnectDB from "./config/database";
 
 require("dotenv").config();
 
@@ -15,12 +15,17 @@ class App {
   }
 
   private setConfig() {
-    this.app.use(express.json()); // Allows us to receive requests with data in json format
-    this.app.use(express.urlencoded({ extended: true })); // Allows us to receive requests with data in urlencoded format
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
   }
 
   private setMongoConfig() {
-    connectDB();
+    if (
+      process.env.NODE_ENV === "DEV" ||
+      process.env.NODE_ENV === "PRODUCTION"
+    ) {
+      ConnectDB.getInstance();
+    }
   }
 
   private setRoutes() {

@@ -1,10 +1,9 @@
-import type { Config } from "@jest/types";
-
-const config: Config.InitialOptions = {
+export default {
   preset: "ts-jest",
   testEnvironment: "node",
-  roots: ["<rootDir>/tests"],
-  testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
+  setupFiles: ["dotenv/config"],
+  collectCoverage: true,
+  coverageReporters: ["text", "html"],
+  coverageDirectory: "coverage",
+  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 };
-
-export default config;

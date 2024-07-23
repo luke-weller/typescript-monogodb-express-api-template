@@ -1,19 +1,27 @@
 import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-//
-/**
- * Connects to the MongoDB database using the provided MONGO_URI.
- * Prints a success message if the connection is successful, otherwise logs the error and exits the process.
- */
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URI as string);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    // Type assertion to treat error as an object with a message property
-    console.error(`Error: ${(error as Error).message}`);
-    process.exit(1);
+class ConnectDB {
+  private static _database: ConnectDB;
+
+  private constructor() {
+    const dbUrl = process.env.MONGO_URI;
+
+    if (dbUrl) {
+      mongoose
+        .connect(dbUrl)
+        .then(() => console.log("Connected with database"))
+        .catch(() => console.log("Not connected with database"));
+    }
   }
-};
 
-export { connectDB };
+  static getInstance() {
+    if (!this._database) {
+      this._database = new ConnectDB();
+    }
+    return this._database;
+  }
+}
+
+export default ConnectDB;
