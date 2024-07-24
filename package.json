@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "export NODE_ENV=TEST && jest",
+    "test": "export NODE_ENV=JEST && jest",
     "start": "ts-node-dev src/server.ts",
     "dev": "nodemon src/server.ts",
     "build": "tsc"

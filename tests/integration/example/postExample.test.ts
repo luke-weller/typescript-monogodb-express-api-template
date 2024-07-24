@@ -9,7 +9,7 @@ import supertest from "supertest";
 const request = supertest(app);
 const apiUrl = "/api/example";
 
-describe("POST /examples", () => {
+describe("POST example to the database /examples", () => {
   beforeAll(async () => {
     await connectDatabase();
   });

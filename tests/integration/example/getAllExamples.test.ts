@@ -10,10 +10,9 @@ import supertest from "supertest";
 const request = supertest(app);
 const apiUrl = "/api/example";
 
-describe("GET /examples", () => {
+describe("GET all example /examples", () => {
   beforeAll(async () => {
     await connectDatabase();
-    await seedDatabase();
   });
 
   afterAll(async () => {
@@ -25,6 +24,9 @@ describe("GET /examples", () => {
   });
 
   test("should get all examples and return a 200 status code", async () => {
+    // ARRANGE:
+    await seedDatabase();
+
     // ACT:
     const res = await request.get(apiUrl);
 

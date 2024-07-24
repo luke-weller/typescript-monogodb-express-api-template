@@ -1,11 +1,9 @@
 import express from "express";
-import {
-  getAllExamples,
-  getExampleById,
-  createExample,
-  updateExampleById,
-  deleteExampleById,
-} from "../controllers/exampleController";
+import { deleteExampleById } from "../controllers/deleteExampleByIdController";
+import { getAllExamples } from "../controllers/getAllExamplesController";
+import { getExampleById } from "../controllers/getExampleByIdController";
+import { createExample } from "../controllers/createExampleController";
+import { updateExampleById } from "../controllers/updateExampleByIdController";
 
 const exampleRouter = express.Router();
 
