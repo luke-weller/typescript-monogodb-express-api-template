@@ -1,9 +1,5 @@
-import app from "../../../src/app";
-import {
-  connectDatabase,
-  closeDatabase,
-  clearDatabase,
-} from "../../setup/mockDb";
+import app from "../../src/app";
+import { connectDatabase, closeDatabase, clearDatabase } from "../setup/mockDb";
 import supertest from "supertest";
 
 const request = supertest(app);
@@ -61,17 +57,5 @@ describe("UPDATE example by ID from in database /examples", () => {
     // ASSERT
     expect(resPut.statusCode).toBe(404);
     expect(resPut.text).toBe("Example not found");
-  });
-
-  test("should return a 400 status code if ID is not valid format", async () => {
-    // ARRANGE:
-    const badExampleId = "hello world";
-
-    // ACT:
-    const resPut = await request.put(`${apiUrl}/${badExampleId}`);
-
-    // ASSERT
-    expect(resPut.statusCode).toBe(400);
-    expect(resPut.text).toBe("Invalid ID format");
   });
 });

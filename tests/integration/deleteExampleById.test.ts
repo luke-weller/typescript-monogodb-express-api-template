@@ -1,16 +1,16 @@
-import app from "../../../src/app";
+import app from "../../src/app";
 import {
   seedDatabase,
   connectDatabase,
   closeDatabase,
   clearDatabase,
-} from "../../setup/mockDb";
+} from "../setup/mockDb";
 import supertest from "supertest";
 
 const request = supertest(app);
 const apiUrl = "/api/example";
 
-describe("GET all example /examples", () => {
+describe("DELETE example by ID from the database /examples", () => {
   beforeAll(async () => {
     await connectDatabase();
   });
@@ -23,15 +23,16 @@ describe("GET all example /examples", () => {
     await clearDatabase();
   });
 
-  test("should get all examples and return a 200 status code", async () => {
+  test("should delete an example by ID and return a 200 status code", async () => {
     // ARRANGE:
     await seedDatabase();
+    const examples = await request.get(apiUrl);
+    const exampleId = examples.body[0]._id;
 
     // ACT:
-    const res = await request.get(apiUrl);
+    const res = await request.delete(`${apiUrl}/${exampleId}`);
 
     // ASSERT
     expect(res.statusCode).toBe(200);
-    expect(res.body.length).toBeGreaterThan(0);
   });
 });

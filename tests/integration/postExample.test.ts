@@ -1,9 +1,5 @@
-import app from "../../../src/app";
-import {
-  connectDatabase,
-  closeDatabase,
-  clearDatabase,
-} from "../../setup/mockDb";
+import app from "../../src/app";
+import { connectDatabase, closeDatabase, clearDatabase } from "../setup/mockDb";
 import supertest from "supertest";
 
 const request = supertest(app);
