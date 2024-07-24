@@ -20,11 +20,10 @@ class App {
   }
 
   private setMongoConfig() {
-    if (
-      process.env.NODE_ENV === "DEV" ||
-      process.env.NODE_ENV === "PRODUCTION"
-    ) {
+    if (process.env.NODE_ENV === "DEV" || process.env.NODE_ENV === "PROD") {
       ConnectDB.getInstance();
+    } else {
+      throw new Error("Invalid NODE_ENV value. Only DEV and PROD are allowed.");
     }
   }
 
