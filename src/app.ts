@@ -29,7 +29,7 @@ class App {
   }
 
   private setRoutes() {
-    this.app.use("/api/examples", exampleRoutes);
+    this.app.use("/api/example", exampleRoutes);
   }
 }
 

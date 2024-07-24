@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import { ExampleModel } from "../../src/models/exampleModel";
 
 const mongod = MongoMemoryServer.create();
 
-export const connect = async () => {
+export const connectDatabase = async () => {
   try {
     const uri = (await mongod).getUri();
     await mongoose.connect(uri);
@@ -31,5 +32,22 @@ export const clearDatabase = async () => {
     }
   } catch (error) {
     console.log(`Error clearing the database: ${error}`);
+  }
+};
+
+export const seedDatabase = async () => {
+  try {
+    const examples = [
+      { name: "Example 1", description: "This is example 1" },
+      { name: "Example 2", description: "This is example 2" },
+      { name: "Example 3", description: "This is example 3" },
+      { name: "Example 3", description: "This is example 3" },
+      { name: "Example 3", description: "This is example 3" },
+      { name: "Example 3", description: "This is example 3" },
+    ];
+
+    await ExampleModel.insertMany(examples);
+  } catch (error) {
+    console.log(`Error seeding the database: ${error}`);
   }
 };

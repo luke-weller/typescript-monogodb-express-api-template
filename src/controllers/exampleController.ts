@@ -4,7 +4,10 @@ import { ExampleModel } from "../models/exampleModel";
 // Create a new example
 export const createExample = async (req: Request, res: Response) => {
   try {
-    const example = new ExampleModel(req.body);
+    const example = new ExampleModel({
+      ...req.body,
+      createdAt: new Date(),
+    });
     await example.save();
     res.status(201).send(example);
   } catch (error) {
