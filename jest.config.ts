@@ -6,4 +6,5 @@ export default {
   coverageReporters: ["text", "html"],
   coverageDirectory: "coverage",
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
+  modulePaths: ["<rootDir>/dist"],
 };
