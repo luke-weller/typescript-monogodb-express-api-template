@@ -1,9 +1,24 @@
 import { Request, Response } from "express";
 import { ExampleModel } from "../models/exampleModel";
 
-// Create a new example
+// Create an example in the database
 export const createExample = async (req: Request, res: Response) => {
   try {
+    if (!req.body.name && !req.body.description) {
+      return res.status(400).send({
+        error: "Example name and description is required in request body.",
+      });
+    }
+
+    if (!req.body.name) {
+      return res.status(400).send({ error: "Example name is required." });
+    }
+    if (!req.body.description) {
+      return res
+        .status(400)
+        .send({ error: "Example description is required." });
+    }
+
     const example = new ExampleModel({
       ...req.body,
       createdAt: new Date(),
@@ -15,7 +30,7 @@ export const createExample = async (req: Request, res: Response) => {
   }
 };
 
-// Get all examples
+// Get all examples from the database
 export const getAllExamples = async (_req: Request, res: Response) => {
   try {
     const examples = await ExampleModel.find({});
@@ -25,7 +40,7 @@ export const getAllExamples = async (_req: Request, res: Response) => {
   }
 };
 
-// Get an example by ID
+// Get an example by ID from the database
 export const getExampleById = async (req: Request, res: Response) => {
   try {
     const example = await ExampleModel.findById(req.params.id);
@@ -38,7 +53,7 @@ export const getExampleById = async (req: Request, res: Response) => {
   }
 };
 
-// Update an example by ID
+// Update an example by ID in the database
 export const updateExampleById = async (req: Request, res: Response) => {
   try {
     const example = await ExampleModel.findByIdAndUpdate(
@@ -55,7 +70,7 @@ export const updateExampleById = async (req: Request, res: Response) => {
   }
 };
 
-// Delete an example by ID
+// Delete an example by ID  from the database
 export const deleteExampleById = async (req: Request, res: Response) => {
   try {
     const example = await ExampleModel.findByIdAndDelete(req.params.id);

@@ -2,7 +2,7 @@ import { Schema, model, Document } from "mongoose";
 
 interface IExample extends Document {
   name: string;
-  description?: string;
+  description: string;
   createdAt: Date;
 }
 
