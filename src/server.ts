@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import app from "./app"; // Import the app from app.ts
+import app from "./app";
 
 // Load environment variables
 dotenv.config();
