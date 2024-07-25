@@ -14,9 +14,10 @@ Before you begin, make sure you have the following installed:
 
 ## Installation
 
-1. **Clone the Repository**
+1. **Use the template and clone the new repo**
 
-   First, clone the project repository to your local machine using Git:
+   Use this template: Use the template by visiting the GitHub repo and click ‘use this template’ and create a repo your own with your own name. CD into that directory.
+   Install Dependencies: Navigate to the project directory and install the necessary dependencies.
 
    ```bash
    git clone https://github.com/your-username/your-project-name.git
